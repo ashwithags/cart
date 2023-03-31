@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function Login() {
+function Login({setToken}) {
     const [inputs, setInputs] = useState({});
-
+  
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -17,8 +17,15 @@ function Login() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(inputs)
 
-        }).then(data=>{
-            console.log(data);
+        })
+        .then(res => res.json())
+        .then(data=>{
+              console.log(data);
+              if(data.message){
+                alert(data.message);
+              }
+              setToken(data.token)
+
         }).catch(
             err=>{console.log(err)}
         );
@@ -27,9 +34,9 @@ function Login() {
     return (
         <div className="container" style={{margin:30}}>
             <div className="col-sm-4">
-            <div class="card">
-            <h5 class="card-header">Login</h5>
-            <div class="card-body">
+            <div className="card">
+            <h5 className="card-header">Login</h5>
+            <div className="card-body">
                 <form onSubmit={handleSubmit}>
                     <label>Username:
                         <input
@@ -47,11 +54,16 @@ function Login() {
                             onChange={handleChange}
                         />
                     </label><br />
-                    <input class="btn btn-primary" type="submit" />
+                    <input className="btn btn-primary" type="submit" />
                 </form>
+
+                {/* <label>Invalid credentials</label> */}
             </div>
         </div>
 
+            </div>
+            <div className="col-sm-4">
+                <p>  username: 'kminchelle', password: '0lelplR',</p>
             </div>
         </div>
        
