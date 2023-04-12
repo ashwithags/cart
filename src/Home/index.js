@@ -52,7 +52,7 @@ const Home=()=>{
 <div className="container" style={{margin:'50'}}>
     <div className="mt-4 p-5 bg-primary text-white rounded">
   <h1>Quote for the day</h1>
-  <p>{quote.quote}</p>
+  <h3>{quote.quote}</h3>
   <p style={{float:'right'}}>{quote.author}</p>
 
 </div>

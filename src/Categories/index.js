@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Product from "../Products/Product";
+import Loading from "../Loading";
 
 const Categories = () => {
 
@@ -7,6 +8,7 @@ const Categories = () => {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState('smartphones');
     const [productId, setProductId] = useState(1);
+    const [spinner, setLoading] = useState(true);
 
 
     const fetchCategories = () => {
@@ -14,6 +16,7 @@ const Categories = () => {
             .then(res => res.json())
             .then(data => {
                 setCategories(data);
+                setLoading(false);
             });
     }
 
@@ -28,6 +31,11 @@ const Categories = () => {
         fetchProductsBasedonCategory();
     }, [category])
 
+    if(spinner){
+        return(
+            <Loading />
+        )
+    }
     return (
         <>
             <div className="container" style={{ marginTop: 30 }}>

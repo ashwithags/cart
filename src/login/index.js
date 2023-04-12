@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Login({setToken}) {
     const [inputs, setInputs] = useState({});
-  
+
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;

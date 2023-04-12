@@ -2,11 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Cart from "./Cart";
 import Categories from "./Categories";
+import Contact from "./Contact";
 import Home from "./Home";
 import Login from "./login";
 import Manage from "./Manage";
 import Products from "./Products";
 import Search from "./Search";
+import User from "./User";
 
 const Nav = () => {
     return (
@@ -39,9 +41,16 @@ const Nav = () => {
                             <Link className="nav-link"  to="/manage">Manage</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to="/profile">Profile</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link"  to="/login">Logout</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link"  to="/contact">Contact</Link>
+                        </li>
                     </ul>
+
                 </div>
             </nav> 
                 
@@ -54,7 +63,9 @@ const Nav = () => {
                     <Route path="/categories" element={<Categories />}></Route>
                     <Route exact path="/search" element={<Search/>}></Route>
                     <Route exact path="/manage" element={<Manage/>}></Route>
+                    <Route exact path="/profile" element={<User/>}></Route>
                     <Route exact path="/login" element={<Login/>}></Route>
+                    <Route exact path="/contact" element={<Contact/>}></Route>
                 </Routes>
             </Router>
 

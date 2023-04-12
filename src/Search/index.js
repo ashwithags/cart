@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../Loading";
 
 const Search = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [product, setProduct] = useState([]);
+    const [spinner, setLoading] = useState(true);
 
     const searchForProduct = () => {
         fetch('https://dummyjson.com/products/search?q=' + searchQuery)
             .then(res => res.json())
-            .then(data => setProduct(data.products));
+            .then(data => setProduct(data.products),setLoading(false));
     }
 
     useEffect(() => {
@@ -16,6 +18,11 @@ const Search = () => {
     }, [searchQuery])
 
 
+    if(spinner){
+        return(
+            <Loading />
+        )
+    }
     return (
         <>
             <div className="container">

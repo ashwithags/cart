@@ -8,16 +8,18 @@ function App() {
   const [token, setToken] = useState()
 
   if(!token){
+  // if (false) {
     console.log(token);
     return (
       <>
-      <Login setToken={setToken} />
+        <Login setToken={setToken}  />
       </>
     )
   }
+
   return (
     <>
-    <Nav/>
+      <Nav />
     </>
   );
 }
