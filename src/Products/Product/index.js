@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import store from "../../Redux/shopestore";
+//import { useDispatch } from "react-redux";
+import addCartAction from "../../Redux/action";
 
 const Product = (a) => {
     const [product, SetProduct] = useState({});
@@ -10,9 +13,29 @@ const Product = (a) => {
             .then(data => SetProduct(data))
     }
 
+   // const dispatch = useDispatch();
+
+    const addToCart = (event) => {
+        event.preventDefault();
+
+        // let action = {
+        //     type: 'ADD-TO-CART',
+        //     data: product
+        // }
+        // console.log('clicked')
+        // store.dispatch(action);
+
+       store.dispatch(addCartAction(product));
+
+    }
+
+   
+
     useEffect(() => {
-        fetchProductDetails()
+        fetchProductDetails();
     }, [a.productId])
+
+ 
 
 
     return (
@@ -22,7 +45,7 @@ const Product = (a) => {
                 Launch static backdrop modal
             </button> */}
 
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -47,7 +70,7 @@ const Product = (a) => {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Add to Cart</button>
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addToCart}>Add to Cart</button>
                         </div>
                     </div>
                 </div>

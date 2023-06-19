@@ -7,8 +7,8 @@ function App() {
 
   const [token, setToken] = useState()
 
-  if(!token){
-  // if (false) {
+//  if(!token){
+ if (false) {
     console.log(token);
     return (
       <>
@@ -17,9 +17,11 @@ function App() {
     )
   }
 
+  //console.log(store.getState());
+  
   return (
     <>
-      <Nav />
+    <Nav />
     </>
   );
 }

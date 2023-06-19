@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
+import store from "../Redux/shopestore";
 
 const Cart = () => {
 
     const [cart, setCartcart] = useState({});
 
-    const fetchCartcart = () => {
-        fetch('https://dummyjson.com/carts/1')
-            .then(res => res.json())
-            .then(res => setCartcart(res))
-    }
+    // const fetchCartcart = () => {
+    //     fetch('https://dummyjson.com/carts/1')
+    //         .then(res => res.json())
+    //         .then(res => setCartcart(res))
+    // }
 
-    useEffect(() => {
-        fetchCartcart();
-    }, []);
+    //const UpdateCartUsingRedux = data => ({type:'UPDATE_CART',data:data});
+
+    // useEffect(() => {
+    //     fetchCartcart();
+    // }, []);
+
+
+    console.log("data from store",store.getState());
+   // setCartcart(store.getState());
 
     return (
         <>
@@ -23,7 +30,7 @@ const Cart = () => {
                             <div className="card mb-3">
                             <div className="row g-0">
                                 <div className="col-md-4">
-                                    <div className="card-body">
+                                    <div className="card-body" key={product.id}>
                                         <h5 className="card-title">{product.title}</h5>
                                         <p className="card-text">{product.description}</p>
                                         <p className="card-text"><small className="text-muted">{product.brand} {product.category}</small></p>
