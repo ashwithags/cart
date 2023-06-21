@@ -11,15 +11,17 @@ const Cart = () => {
     //         .then(res => setCartcart(res))
     // }
 
-    //const UpdateCartUsingRedux = data => ({type:'UPDATE_CART',data:data});
+    // //const UpdateCartUsingRedux = data => ({type:'UPDATE_CART',data:data});
 
-    // useEffect(() => {
-    //     fetchCartcart();
-    // }, []);
+    useEffect(() => {
+     //   fetchCartcart();
+        setCartcart(store.getState());
+    }, []);
 
 
-    console.log("data from store",store.getState());
-   // setCartcart(store.getState());
+   console.log("data from store",store.getState());
+   //setCartcart(store.getState());
+   //console.log(cart);
 
     return (
         <>

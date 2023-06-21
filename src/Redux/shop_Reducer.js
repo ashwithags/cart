@@ -1,39 +1,34 @@
-const initialState = {
-    cartItems: [],
-    totalPrice: 0,
-  };
-  
-
-const updateCart = (state = initialState, action) => {
-
-    console.log(state, action);
+const updateCart = (state, action) => {
 
     switch (action.type) {
         case 'ADD_TO_CART':
             const { payload } = action;
-            const item = state.cartItems?.find(
-                product => product.id === payload.id,
-            );
+             const item = state.products?.find(
+                 product => product.id === payload.id,
+             );
 
             if (item) {
                 return {
                     ...state,
-                    cartItems: state.cartItems?.map(item => item.id === payload.id
+                    products: state.products?.map(item => item.id === payload.id
                         ? {
                             ...item,
                             qty: item.qty + 1,
                         }
                         : item
                     ),
-                    totalPrice: state.totalPrice + payload.price,
+                    discountedTotal: state.discountedTotal + payload.price,
                 };
             }
             else{
                 return {
                     ...state,
-                    cartItems: [...state.cartItems, payload],
-                    totalPrice: state.totalPrice + payload.price,
-                };
+                    products: [...state.products, payload],
+                    discountedTotal: state.discountedTotal + payload.price,
+                 };
+                // console.log(state.products);
+                // console.log(...state.products);
+                // return { ...state, products: [...state.products, payload] }
             }
         
         case 'REMOVE_FROM_CART': return state;

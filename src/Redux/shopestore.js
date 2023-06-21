@@ -68,7 +68,7 @@ import updateCart from './shop_Reducer';
 //     "totalQuantity": 10
 // }
 
-let initialState = {};
+let initialState = {products:[],discountedTotal:0};
 
 const store = createStore(updateCart,initialState);
 

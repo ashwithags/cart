@@ -7,7 +7,7 @@ const Product = (a) => {
     const [product, SetProduct] = useState({});
 
     const fetchProductDetails = () => {
-        console.log(a.productId);
+      //  console.log(a.productId);
         fetch('https://dummyjson.com/products/' + a.productId)
             .then(res => res.json())
             .then(data => SetProduct(data))
